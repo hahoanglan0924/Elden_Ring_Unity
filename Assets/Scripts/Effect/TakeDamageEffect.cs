@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PH{
 
-        [CreateAssetMenu(menuName = "Character Effects/Instant Effects/TakeDamage")]
+[CreateAssetMenu(menuName = "Character Effects/Instant Effects/TakeDamage")]
 public class TakeDamageEffect : InstantCharacterEffect
 {
     [Header("Character Causing Damager")]
@@ -48,12 +48,12 @@ public class TakeDamageEffect : InstantCharacterEffect
     }
 
     private void CalculateDamage(CharacterManager character){
-        if(!character.IsOwner)
-        return;
-    
+    if(character.isDead.Value)
+            return;
+            
     if(characterCausingDamage != null){
         Debug.Log("Damage");
- finalDamageDealt = Mathf.RoundToInt(physicalDamage + magicDamage + fireDamage + lightingDamage + holyDamage);
+        finalDamageDealt = Mathf.RoundToInt(physicalDamage + magicDamage + fireDamage + lightingDamage + holyDamage);
 
     if(finalDamageDealt <= 0){
         finalDamageDealt = 1;

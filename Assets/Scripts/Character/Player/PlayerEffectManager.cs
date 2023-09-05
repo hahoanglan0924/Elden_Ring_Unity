@@ -12,8 +12,8 @@ public class PlayerEffectManager : CharacterEffectManager
  private void Update(){
     
     if(processEffect){
-        processEffect = false; 
 
+        processEffect = false; 
         InstantCharacterEffect effect = Instantiate(effectTotest);
         ProcessInstantEffect(effect);
     }

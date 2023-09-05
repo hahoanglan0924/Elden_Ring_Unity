@@ -19,14 +19,15 @@ public class DamageCollider : MonoBehaviour
     protected List<CharacterManager> charactersDamaged = new List<CharacterManager>();
 
     private void OnTriggerEnter(Collider other) {
+
         CharacterManager damageTarget = other.GetComponent<CharacterManager>();
-        Debug.Log("Trigger");
+
 
         if(damageTarget != null) 
         {
             contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
 
-        DamageTarget(damageTarget);
+            DamageTarget(damageTarget);
         }
     }
 

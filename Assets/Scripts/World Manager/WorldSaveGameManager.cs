@@ -70,6 +70,18 @@ public class WorldSaveGameManager : MonoBehaviour
 			case CharacterSlot.CharacterSlot_01:
 			fileName = "Character_01";
 				break;
+			case CharacterSlot.CharacterSlot_02:
+			fileName = "Character_02";
+				break;
+				case CharacterSlot.CharacterSlot_03:
+			fileName = "Character_03";
+				break;
+				case CharacterSlot.CharacterSlot_04:
+			fileName = "Character_04";
+				break;
+				case CharacterSlot.CharacterSlot_05:
+			fileName = "Character_05";
+				break;
 		}
 		return fileName;
 	}

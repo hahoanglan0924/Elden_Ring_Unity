@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instantEffectID: 1
   characterCausingDamage: {fileID: 0}
-  physicalDamage: 20
+  physicalDamage: 25
   magicDamage: 0
   fireDamage: 0
   lightingDamage: 0

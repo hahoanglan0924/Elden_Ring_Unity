@@ -20,20 +20,5 @@ public class TakeStaminaDamageEffect : InstantCharacterEffect
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}}
+}
+}
