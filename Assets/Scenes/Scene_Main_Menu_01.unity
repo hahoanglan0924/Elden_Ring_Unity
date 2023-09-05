@@ -548,6 +548,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Save Slots (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6294300009351146892, guid: a593979e1f2782d4a9b91fbe804bc5aa,
+        type: 3}
+      propertyPath: characterSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8620882443340763519, guid: a593979e1f2782d4a9b91fbe804bc5aa,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1586,6 +1591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Save Slots (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294300009351146892, guid: a593979e1f2782d4a9b91fbe804bc5aa,
+        type: 3}
+      propertyPath: characterSlot
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8620882443340763519, guid: a593979e1f2782d4a9b91fbe804bc5aa,
         type: 3}
@@ -3878,6 +3888,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Save Slots (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6294300009351146892, guid: a593979e1f2782d4a9b91fbe804bc5aa,
+        type: 3}
+      propertyPath: characterSlot
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8620882443340763519, guid: a593979e1f2782d4a9b91fbe804bc5aa,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4121,6 +4136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Save Slots (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294300009351146892, guid: a593979e1f2782d4a9b91fbe804bc5aa,
+        type: 3}
+      propertyPath: characterSlot
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8620882443340763519, guid: a593979e1f2782d4a9b91fbe804bc5aa,
         type: 3}

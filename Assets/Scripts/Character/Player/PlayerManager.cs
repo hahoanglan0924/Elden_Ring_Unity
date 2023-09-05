@@ -62,6 +62,8 @@ public class PlayerManager : CharacterManager
             playerNetworkManager.currentStamina.OnValueChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
             playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaReganTimer;      
         }
+
+        playerNetworkManager.currentHealth.OnValueChanged += playerNetworkManager.CheckHP;
     }
 
     protected override void LateUpdate(){

@@ -42,27 +42,28 @@ public class TakeDamageEffect : InstantCharacterEffect
 
         if(character.isDead.Value)
             return;
-
         CalculateDamage(character);
         
     }
 
     private void CalculateDamage(CharacterManager character){
-    if(character.isDead.Value)
-            return;
-            
-    if(characterCausingDamage != null){
-        Debug.Log("Damage");
-        finalDamageDealt = Mathf.RoundToInt(physicalDamage + magicDamage + fireDamage + lightingDamage + holyDamage);
+
+        if(!character.IsOwner)
+        return;
+
+        if(characterCausingDamage != null)
+    {
+
+    }
+    finalDamageDealt = Mathf.RoundToInt(physicalDamage + magicDamage + fireDamage + lightingDamage + holyDamage);
 
     if(finalDamageDealt <= 0){
-        finalDamageDealt = 1;
+
     }
 
-    character.characterNetworkManager.currentHealth.Value -= finalDamageDealt;
-    }
+    character.characterNetworkManager.currentHealth.Value -= finalDamageDealt; 
 
-   
+
     }
 }
 }

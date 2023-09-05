@@ -22,8 +22,8 @@ public class PlayerUIHudManager : MonoBehaviour
     }
 
     
-    public void SetNewHealthValue(float oldValue, float newValue){
-        healthBar.SetStats(Mathf.RoundToInt(newValue));
+    public void SetNewHealthValue(int oldValue, int newValue){
+        healthBar.SetStats(newValue);
     }
 
     public void SetMaxHealthValue(int maxHealth){

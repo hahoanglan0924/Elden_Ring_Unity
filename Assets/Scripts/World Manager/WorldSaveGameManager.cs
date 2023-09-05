@@ -144,6 +144,8 @@ public class WorldSaveGameManager : MonoBehaviour
 	}
 
 	private void NewGame(){
+		player.playerNetworkManager.vitality.Value = 15;
+		player.playerNetworkManager.endurance.Value = 10;
 		SaveGame();
 		StartCoroutine(LoadWorldScene());
 	}
@@ -188,6 +190,18 @@ public class WorldSaveGameManager : MonoBehaviour
 
 		saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_01);
 		characterSlots01 = saveFileDataWriter.LoadSaveFile();
+
+		saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_02);
+		characterSlots02 = saveFileDataWriter.LoadSaveFile();
+
+		saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_03);
+		characterSlots03 = saveFileDataWriter.LoadSaveFile();
+		
+		saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_04);
+		characterSlots04 = saveFileDataWriter.LoadSaveFile();
+
+		saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_05);
+		characterSlots05 = saveFileDataWriter.LoadSaveFile();
 
 
 	}

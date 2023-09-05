@@ -10,6 +10,7 @@ public class PlayerNetworkManager : CharacterNetworkManager
     public  NetworkVariable<FixedString64Bytes> characterName = new NetworkVariable<FixedString64Bytes>("Character", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     PlayerManager player;
     protected override void Awake(){
+        base.Awake();
         player = GetComponent<PlayerManager>();
     }
     public void SetNewMaxHealthValue(int oldVitality, int newVitality){
