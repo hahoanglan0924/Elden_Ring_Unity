@@ -49,6 +49,9 @@ public class PlayerInputManager : MonoBehaviour
                 DontDestroyOnLoad(gameObject);
                 SceneManager.activeSceneChanged += OnSceneChange;
                     instance.enabled = false;
+
+                    if(playerControls != null)
+                    playerControls.Disable();
         
         }
 
@@ -57,10 +60,14 @@ public class PlayerInputManager : MonoBehaviour
 //if we are loading into our world scene, enable our player controls
         if(newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex()){
             instance.enabled = true;
+              if(playerControls != null)
+                    playerControls.Enable();
         }else{
             //otherwise we must be at the main menu, disable our player controls
             //this is so our player cant move around if we enter things like character creation meni ect
             instance.enabled = false;
+              if(playerControls != null)
+                    playerControls.Disable();
         }
 
     }

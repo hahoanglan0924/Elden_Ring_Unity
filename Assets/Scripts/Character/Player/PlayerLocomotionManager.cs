@@ -89,7 +89,7 @@ namespace PH {
         }
 
         private void HandleJumpingMovement(){
-            if(player.isJumping) {
+            if(player.playerNetworkManager.isJumping.Value) {
             player.characterController.Move(jumpDirection * jumpForwardVelocity * Time.deltaTime);
             }
         }
@@ -161,7 +161,7 @@ public void AttemptToPerformJump(){
     if(player.playerNetworkManager.currentStamina.Value <= 0)
     return;
 
-    if(player.isJumping)
+    if(player.playerNetworkManager.isJumping.Value)
     return;
 
     if(!player.isGrounded)
@@ -170,7 +170,7 @@ public void AttemptToPerformJump(){
     player.playerAnimatorManager.PlayTargetActionAnimation("Jump_start", false, false, true, false);
     yVelocity.y = Mathf.Sqrt(-2 * jumpHeight * gravityForce);
 
-    player.isJumping = true;
+    player.playerNetworkManager.isJumping.Value = true;
 
     player.playerNetworkManager.currentStamina.Value -= jumpStaminaCost;
 
@@ -199,7 +199,7 @@ public void ApplyJumpingVelocity(){
 public void AttemptToPerformAttack(){
     if(player.isPerformingAction)
     return;
-        if(player.isJumping)
+        if(player.playerNetworkManager.isJumping.Value)
     return;
 
    // player.playerAnimatorManager.PlayTargetActionAnimation("Attack01", false,true, true);
