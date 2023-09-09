@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 namespace PH{
 public class PlayerManager : CharacterManager
 {
+    [Header("Debug Menu")]
+    [SerializeField] bool respawnCharacter = false;
+    [SerializeField] bool SwitchRightWeapon = false;
     [HideInInspector]public  PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector]public PlayerLocomotionManager playerLocomotionManager;
     [HideInInspector] public PlayerNetworkManager playerNetworkManager;
     [HideInInspector] public PlayerStatsManager playerStatsManager;
-
+    [HideInInspector] public PlayerInventoryManager playerInventoryManager;
+    [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
    // [HideInInspector] public Player
     public Transform cameraRoot;
 
@@ -24,6 +28,8 @@ public class PlayerManager : CharacterManager
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         playerNetworkManager = GetComponent<PlayerNetworkManager>();
         playerStatsManager = GetComponent<PlayerStatsManager>();
+        playerInventoryManager = GetComponent<PlayerInventoryManager>();
+        playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
         // leftHandConstraint = GetComponentInChildren<TwoBoneIKConsraint>();
         // rightHandConstraint;
             playerNetworkManager.vitality.Value = 15;
@@ -62,8 +68,22 @@ public class PlayerManager : CharacterManager
             playerNetworkManager.currentStamina.OnValueChanged += PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue;
             playerNetworkManager.currentStamina.OnValueChanged += playerStatsManager.ResetStaminaReganTimer;      
         }
-
+    //Stats
         playerNetworkManager.currentHealth.OnValueChanged += playerNetworkManager.CheckHP;
+        //Equipment
+        playerNetworkManager.currentRightHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentRightHandWeaponIDChanged;
+        playerNetworkManager.currentLeftHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentLeftHandWeaponIDChanged;
+    }
+
+    public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false){
+
+         if(IsOwner){
+            PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
+        }
+
+        return base.ProcessDeathEvent(manuallySelectDeathAnimation);
+
+       
     }
 
     protected override void LateUpdate(){
@@ -73,6 +93,8 @@ public class PlayerManager : CharacterManager
         base.LateUpdate();
 
         PlayerCamera.instance.HandleAllCameraActions();
+
+        DebugMenu();
     }
 
     public void SaveGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData){
@@ -107,6 +129,27 @@ public class PlayerManager : CharacterManager
             playerNetworkManager.currentStamina.Value = currentCharacterData.currentStamina;
             
             PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(playerNetworkManager.maxStamina.Value);
+    }
+        private void DebugMenu(){
+        if(respawnCharacter){
+        respawnCharacter = false;
+        ReviveCharacter();
+        }
+        if(SwitchRightWeapon){
+            SwitchRightWeapon = false;
+            playerEquipmentManager.SwitchRightWeapon();
+        }
+    }
+
+    public override void ReviveCharacter() {
+        base.ReviveCharacter();
+
+        if(IsOwner){
+            playerNetworkManager.currentHealth.Value = playerNetworkManager.maxHealth.Value;
+            playerNetworkManager.currentStamina.Value = playerNetworkManager.maxStamina.Value;
+
+            playerAnimatorManager.PlayTargetActionAnimation("Empty", false);
+        }
     }
 }
 }

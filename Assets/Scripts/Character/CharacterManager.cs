@@ -79,6 +79,10 @@ public class CharacterManager : NetworkBehaviour
 		yield return new WaitForSeconds(5);
 	}
 
+	public virtual void ReviveCharacter(){
+		
+	}
+
 
 }
 }

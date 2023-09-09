@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicalDamage: 100
   magicDamage: 0
-  fireDamage: 0
+  fireDamage: 100
   lightingDamage: 0
   holyDamage: 0
 --- !u!65 &190911397
