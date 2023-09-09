@@ -30,9 +30,7 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] bool dodgeInput = false;
     [SerializeField] bool sprintInput = false;
     [SerializeField] bool jumpInput = false;
-
-    [Header ("Attack")]
-    [SerializeField] bool attack01Input = false;
+    [SerializeField] bool RB_Input = false;
 
 
     private void Awake() {
@@ -89,7 +87,7 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
 
             //Attack01
-            playerControls.PlayerActions.Attack01.performed += i => attack01Input = true;
+            playerControls.PlayerActions.RB.performed += i => RB_Input = true;
             
             
     }
@@ -124,12 +122,9 @@ private void HandelAllInput(){
     HandleDodgeInput();
    HandleSprintInput();
    HandleJumpInput();
-   HandleAllAttacks();
+   HandleRBInput();
 }
 
-private void HandleAllAttacks(){
-HandleAttack01Input();
-}
 
 //Movement
 private Vector2 smoothedMovementInput;
@@ -201,12 +196,16 @@ private void HandleJumpInput(){
 
 }
 
-private void HandleAttack01Input(){
-    if(attack01Input){
-        attack01Input = false;
-        player.playerLocomotionManager.AttemptToPerformAttack();
+private void HandleRBInput(){
+    if(RB_Input){
+    RB_Input = false;
+
+    player.playerNetworkManager.SetCharacterActionHand(true);
+
+    player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRighthandWeapon.oh_RB_Action, player.playerInventoryManager.currentRighthandWeapon);
     }
 }
+
 
 }
 }

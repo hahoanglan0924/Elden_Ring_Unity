@@ -157,7 +157,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.13, y: 1.08, z: 0.04}
   m_Center: {x: -0.0000014868791, y: 0.7, z: 0}
@@ -173,12 +173,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88fa43981c066646b78b8a66e4c1c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageCollider: {fileID: 8225895345015843076}
   physicalDamage: 10
   magicDamage: 0
   fireDamage: 0
   lightingDamage: 0
   holyDamage: 0
   characterCausingDamage: {fileID: 0}
+  light_attack_01_modifier: 0
 --- !u!1 &4871305296804122614
 GameObject:
   m_ObjectHideFlags: 0

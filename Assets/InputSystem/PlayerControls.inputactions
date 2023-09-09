@@ -234,6 +234,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RB",
+                    "type": "Button",
+                    "id": "9f08c804-ed86-4f24-8659-1f207b16de02",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Attack01",
                     "type": "Button",
                     "id": "6f4f85b0-c145-4fe2-8b91-54d3558e6ae2",
@@ -316,6 +325,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack01",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab97e619-e832-46ca-89eb-583c5735ed7f",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14ceef0d-c989-494a-be3d-c87ef686207a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

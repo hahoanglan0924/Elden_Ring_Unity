@@ -15,6 +15,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerStatsManager playerStatsManager;
     [HideInInspector] public PlayerInventoryManager playerInventoryManager;
     [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
+    [HideInInspector] public PlayerCombatManager playerCombatManager;
    // [HideInInspector] public Player
     public Transform cameraRoot;
 
@@ -30,6 +31,7 @@ public class PlayerManager : CharacterManager
         playerStatsManager = GetComponent<PlayerStatsManager>();
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
+        playerCombatManager = GetComponent<PlayerCombatManager>();
         // leftHandConstraint = GetComponentInChildren<TwoBoneIKConsraint>();
         // rightHandConstraint;
             playerNetworkManager.vitality.Value = 15;
@@ -73,9 +75,10 @@ public class PlayerManager : CharacterManager
         //Equipment
         playerNetworkManager.currentRightHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentRightHandWeaponIDChanged;
         playerNetworkManager.currentLeftHandWeaponID.OnValueChanged += playerNetworkManager.OnCurrentLeftHandWeaponIDChanged;
+        playerNetworkManager.currentWeaponBeingUsed.OnValueChanged += playerNetworkManager.OnCurrentWeaponBeingUsedIDChanged;
 //Upon connecting, if we are the owner of this character, but we are not the server, reload our character data to this newly instantiated character
 
-        if(isOwner && IsServer){
+        if(IsOwner && IsServer){
             LoadGameDataFromCurrentCharacterData(ref WorldSaveGameManager.instance.currentCharacterData);
         }
     }

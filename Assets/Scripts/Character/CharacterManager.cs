@@ -24,6 +24,7 @@ public class CharacterManager : NetworkBehaviour
 	[HideInInspector] public CharacterNetworkManager characterNetworkManager;
 	[HideInInspector] public CharacterEffectManager characterEffectsManager;
 	[HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
+	[HideInInspector] public CharacterCombatManager characterCombatManager;
 	protected virtual void Awake()
 	{
 		DontDestroyOnLoad(this);
@@ -33,6 +34,7 @@ public class CharacterManager : NetworkBehaviour
 		animator = GetComponent<Animator>();
 		characterEffectsManager = GetComponent<CharacterEffectManager>();
 		characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+		characterCombatManager = GetComponent<CharacterCombatManager>();
 	}
 
 	protected virtual void Start() {

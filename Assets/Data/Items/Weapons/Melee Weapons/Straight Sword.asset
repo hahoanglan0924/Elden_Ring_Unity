@@ -17,7 +17,7 @@ MonoBehaviour:
   itemDescription: 'S Straight Sword
 
 '
-  itemID: 0
+  itemID: 2
   weaponModel: {fileID: 8631828658412238519, guid: 644c707f96fb9d7418e5bfa75dbfb276,
     type: 3}
   strengthREQ: 10
@@ -31,3 +31,4 @@ MonoBehaviour:
   lightingDamage: 0
   baseStaminaCost: 25
   poiseDamage: 20
+  oh_RB_Action: {fileID: 11400000, guid: ff4a174b7f9407a49b763aef0e4e1612, type: 2}

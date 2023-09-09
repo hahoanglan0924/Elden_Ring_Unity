@@ -45,6 +45,17 @@ public class CharacterAnimatorManager : MonoBehaviour
 
         characterManager.characterNetworkManager.NotifyTheServerOfActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
     }
+      public virtual void PlayTargetAttackActionAnimation(AttackType attackType, string targetAnimation, bool isPerformingAction, bool applyRootMotion = true, bool canRotate = true, bool canMove = true){
+      
+        characterManager.characterCombatManager.currentAttackType = attackType;
+        characterManager.applyRootMotion = applyRootMotion;
+        characterManager.animator.CrossFade(targetAnimation, 0.15f);
+        characterManager.isPerformingAction = isPerformingAction;
+        characterManager.canMove = canMove; 
+        characterManager.canRotate = canRotate;
+
+        characterManager.characterNetworkManager.NotifyTheServerOfAttackActionAnimationServerRpc(NetworkManager.Singleton.LocalClientId, targetAnimation, applyRootMotion);
+    }
 
     // public virtual void TurnPose(){
     //     characterManager.animator.SetBool("RightPose", !rightPose);

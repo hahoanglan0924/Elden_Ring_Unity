@@ -24,9 +24,15 @@ namespace PH
 
    [Header("Stamina Costs")]
    public int baseStaminaCost = 20;
+   public float lightAttackStaminaCostMultiplayer = 0.9f;
+   [Header("Attack modifier")]
+   public float light_attack_01_modifier = 1.1f;
 
    [Header("Weapon Poise")]
    public float poiseDamage = 10;
+
+   [Header("Actions")]
+   public WeaponItemAction oh_RB_Action;
 
 }
 }

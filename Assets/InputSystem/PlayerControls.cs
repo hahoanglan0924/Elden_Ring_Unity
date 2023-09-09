@@ -256,6 +256,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""RB"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f08c804-ed86-4f24-8659-1f207b16de02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Attack01"",
                     ""type"": ""Button"",
                     ""id"": ""6f4f85b0-c145-4fe2-8b91-54d3558e6ae2"",
@@ -340,6 +349,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Attack01"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab97e619-e832-46ca-89eb-583c5735ed7f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14ceef0d-c989-494a-be3d-c87ef686207a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -384,6 +415,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerActions_RB = m_PlayerActions.FindAction("RB", throwIfNotFound: true);
         m_PlayerActions_Attack01 = m_PlayerActions.FindAction("Attack01", throwIfNotFound: true);
         m_PlayerActions_Dodge = m_PlayerActions.FindAction("Dodge", throwIfNotFound: true);
         // UI
@@ -544,6 +576,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_Jump;
+    private readonly InputAction m_PlayerActions_RB;
     private readonly InputAction m_PlayerActions_Attack01;
     private readonly InputAction m_PlayerActions_Dodge;
     public struct PlayerActionsActions
@@ -552,6 +585,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public PlayerActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
+        public InputAction @RB => m_Wrapper.m_PlayerActions_RB;
         public InputAction @Attack01 => m_Wrapper.m_PlayerActions_Attack01;
         public InputAction @Dodge => m_Wrapper.m_PlayerActions_Dodge;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
@@ -569,6 +603,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @RB.started += instance.OnRB;
+            @RB.performed += instance.OnRB;
+            @RB.canceled += instance.OnRB;
             @Attack01.started += instance.OnAttack01;
             @Attack01.performed += instance.OnAttack01;
             @Attack01.canceled += instance.OnAttack01;
@@ -585,6 +622,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @RB.started -= instance.OnRB;
+            @RB.performed -= instance.OnRB;
+            @RB.canceled -= instance.OnRB;
             @Attack01.started -= instance.OnAttack01;
             @Attack01.performed -= instance.OnAttack01;
             @Attack01.canceled -= instance.OnAttack01;
@@ -666,6 +706,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnSprint(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnRB(InputAction.CallbackContext context);
         void OnAttack01(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
     }

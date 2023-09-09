@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PH{
 public class WeaponManager : MonoBehaviour
 {
-   [SerializeField] MeleeWeaponDamageCollider meleeWeaponDamageCollider;
+   public MeleeWeaponDamageCollider meleeWeaponDamageCollider;
 
    private void Awake() {
     meleeWeaponDamageCollider = GetComponentInChildren<MeleeWeaponDamageCollider>();
@@ -15,6 +15,8 @@ public class WeaponManager : MonoBehaviour
 
     meleeWeaponDamageCollider.characterCausingDamage = characterWieldingWeapon;
     meleeWeaponDamageCollider.physicalDamage = weapon.physicalDamage;
+
+    meleeWeaponDamageCollider.light_attack_01_modifier = weapon.light_attack_01_modifier; //
 
    }
 }

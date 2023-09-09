@@ -16,6 +16,10 @@ namespace PH {
         [SerializeField] float sprintingSpeed = 6.5f;
         [SerializeField] private int sprintingStaminaCost = 2;
 
+        [Header("Aim")]
+        [SerializeField] private Transform aimTarget;
+        [SerializeField] private float aimDistance = 1f;
+
         private Vector3 moveDirection;
 
         [SerializeField] float rotationSpeed = 5;
@@ -40,6 +44,7 @@ namespace PH {
         }
 
         protected override void Update() {
+            aimTarget.position = PlayerCamera.instance.transform.position + PlayerCamera.instance.transform.forward * aimDistance;
             base.Update();
             if(player.IsOwner){
                 player.characterNetworkManager.verticalMovement.Value = verticalMovement;

@@ -132,5 +132,23 @@ private void InitializeWeaponSlots()
             leftWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentLefthandWeapon);
         }
     }
+
+    //Damage Colliders
+
+    public void OpenDamageCollider(){
+        if(player.playerNetworkManager.isUsingRightHand.Value){
+            rightWeaponManager.meleeWeaponDamageCollider.EnableDamageCollider();
+        }else if(player.playerNetworkManager.isUsingLeftHand.Value){
+            leftWeaponManager.meleeWeaponDamageCollider.EnableDamageCollider();
+        }
+    }
+
+      public void CloseDamageCollider(){
+        if(player.playerNetworkManager.isUsingRightHand.Value){
+            rightWeaponManager.meleeWeaponDamageCollider.DisableDamageCollider();
+        }else if(player.playerNetworkManager.isUsingLeftHand.Value){
+            leftWeaponManager.meleeWeaponDamageCollider.DisableDamageCollider();
+        }
+    }
 }
 }
